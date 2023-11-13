@@ -31,13 +31,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('View Logs') {
-            steps {
-                script {
-                    sh 'apk add --no-cache docker-compose'  // Install Docker Compose
-                    sh 'docker-compose logs > logs.txt'  // Save logs to a file
-                }
-            }
-        }
     }
 }
