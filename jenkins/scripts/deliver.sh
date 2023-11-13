@@ -9,6 +9,12 @@ set -x
 npm run build
 set +x
 
+echo 'The following "serve" command serves the optimized production build on port 3000.'
+set -x
+npm install -g serve
+serve -s build -l 3000
+set +x
+
 echo 'The following "npm" command runs your Node.js/React application in'
 echo 'development mode and makes the application available for web browsing.'
 echo 'The "npm start" command has a trailing ampersand so that the command runs'
