@@ -11,7 +11,7 @@ set +x
 
 echo 'The following "serve" command serves the optimized production build on port 3000.'
 set -x
-npm install -g serve
+sudo npm install -g serve
 serve -s build -l 3000
 set +x
 
