@@ -9,6 +9,11 @@ pipeline {
         CI = 'true'
     }
     stages {
+        stage('Install Docker Compose') {
+            steps {
+                sh 'apt-get update && apt-get install -y docker-compose'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'
@@ -24,14 +29,6 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 sh './jenkins/scripts/kill.sh'
-            }
-        }
-        stage('View Logs') {
-            steps {
-                script {
-                    sh 'apk add --no-cache docker-compose'  // Install Docker Compose
-                    sh 'docker-compose logs > logs.txt'  // Save logs to a file
-                }
             }
         }
     }
