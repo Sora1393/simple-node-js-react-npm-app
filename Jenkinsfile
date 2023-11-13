@@ -2,18 +2,13 @@ pipeline {
     agent {
         docker {
             image 'node:lts-buster-slim'
-            args '-u root -p 3000:3000'
+            args '-p 3000:3000'
         }
     }
     environment {
         CI = 'true'
     }
     stages {
-        stage('Install Docker Compose') {
-            steps {
-                sh 'apt-get update && apt-get install -y docker-compose'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'npm install'
