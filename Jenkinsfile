@@ -27,4 +27,11 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            script {
+                sh 'docker-compose logs'
+            }
+        }
+    }
 }
